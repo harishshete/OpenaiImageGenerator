@@ -93,10 +93,9 @@
             display: none;
         }
 
-        #loading{
+        #loading {
             display: none;
         }
-
     </style>
 </head>
 
@@ -119,14 +118,19 @@
         <div id="showError"> Image Could not be generated, please enter a valid text </div>
         <div id="loading">Loading...</div>
         <input id="submit-btn" type="submit" value="Submit">
+
+
     </form>
 
     <script>
+         const host = '<%= host %>';
         const form = document.getElementById('myForm');
         const showError = document.getElementById('showError');
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault(); // prevent the form from submitting normally
+            console.log("Message");
+            console.log(`http://${host}/generateimage`);
 
             const textInput = document.getElementById('text-input').value;
             const submitBtn = document.getElementById('submit-btn');
@@ -135,7 +139,7 @@
             try {
                 submitBtn.disabled = true; // disable the submit button
                 loading.style.display = 'block';
-                const response = await fetch('http://localhost:5000/generateimage', {
+                const response = await fetch(`http://${host}/generateimage`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
