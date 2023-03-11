@@ -139,7 +139,7 @@
             try {
                 submitBtn.disabled = true; // disable the submit button
                 loading.style.display = 'block';
-                const response = await fetch(`http://${host}/generateimage`, {
+                const response = await fetch(`https://${host}/generateimage`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
